@@ -1,0 +1,320 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+.trendGauge {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  overflow: hidden;
+}
+.trendGauge .scale {
+  position: absolute;
+  top: 20px;
+  left: 35px;
+  width: 170px;
+  height: 85px;
+  background: url(../stylesheets/images/scale.png) no-repeat center;
+}
+.trendGauge .scale .bottomArrow {
+  position: absolute;
+  bottom: -59px;
+  left: 25px;
+  width: 120px;
+  height: 120px;
+  background: url(../stylesheets/images/bottomArrow.png) no-repeat center bottom;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.trendGauge .scale .triangle {
+  width: 171px;
+  height: 171px;
+  position: absolute;
+  right: 0;
+  bottom: -85px;
+  background: url(../stylesheets/images/triangle.png) no-repeat center;
+  -webkit-transition: all 1s ease-in-out;
+  -moz-transition: all 1s ease-in-out;
+  -ms-transition: all 1s ease-in-out;
+  -o-transition: all 1s ease-in-out;
+  transition: all 1s ease-in-out;
+}
+.trendGauge .scale .triangle .inner {
+  position: absolute;
+  bottom: 76px;
+  left: -20px;
+  font-size: 12px;
+  color: #939598;
+}
+.trendGauge .scale span {
+  position: absolute;
+  bottom: -3px;
+  font-size: 12px;
+  color: #939598;
+}
+.trendGauge .scale span.value {
+  bottom: -28px;
+  left: 73px;
+  font-size: 24px;
+  color: #4ca5ca;
+}
+.trendGauge .scale span.leftValue {
+  left: -15px;
+}
+.trendGauge .scale span.rightValue {
+  right: -24px;
+}
+
+/*rotate element according to the given average and percent, normalize to 10 different cases*/
+/*arrow & triangle*/
+.active[data-average='0'] > div.trendGauge div.triangle, .active[data-percent='0'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+/*average displayed value*/
+.active[data-average='0'] .inner {
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='10'] > div.trendGauge div.triangle, .active[data-percent='10'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(18deg);
+  -moz-transform: rotate(18deg);
+  -ms-transform: rotate(18deg);
+  -o-transform: rotate(18deg);
+  transform: rotate(18deg);
+}
+
+/*average displayed value*/
+.active[data-average='10'] .inner {
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='20'] > div.trendGauge div.triangle, .active[data-percent='20'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(36deg);
+  -moz-transform: rotate(36deg);
+  -ms-transform: rotate(36deg);
+  -o-transform: rotate(36deg);
+  transform: rotate(36deg);
+}
+
+/*average displayed value*/
+.active[data-average='20'] .inner {
+  -webkit-transform: rotate(-36deg);
+  -moz-transform: rotate(-36deg);
+  -ms-transform: rotate(-36deg);
+  -o-transform: rotate(-36deg);
+  transform: rotate(-36deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='30'] > div.trendGauge div.triangle, .active[data-percent='30'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(54deg);
+  -moz-transform: rotate(54deg);
+  -ms-transform: rotate(54deg);
+  -o-transform: rotate(54deg);
+  transform: rotate(54deg);
+}
+
+/*average displayed value*/
+.active[data-average='30'] .inner {
+  -webkit-transform: rotate(-54deg);
+  -moz-transform: rotate(-54deg);
+  -ms-transform: rotate(-54deg);
+  -o-transform: rotate(-54deg);
+  transform: rotate(-54deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='40'] > div.trendGauge div.triangle, .active[data-percent='40'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(72deg);
+  -moz-transform: rotate(72deg);
+  -ms-transform: rotate(72deg);
+  -o-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+
+/*average displayed value*/
+.active[data-average='40'] .inner {
+  -webkit-transform: rotate(-72deg);
+  -moz-transform: rotate(-72deg);
+  -ms-transform: rotate(-72deg);
+  -o-transform: rotate(-72deg);
+  transform: rotate(-72deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='50'] > div.trendGauge div.triangle, .active[data-percent='50'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/*average displayed value*/
+.active[data-average='50'] .inner {
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='60'] > div.trendGauge div.triangle, .active[data-percent='60'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(108deg);
+  -moz-transform: rotate(108deg);
+  -ms-transform: rotate(108deg);
+  -o-transform: rotate(108deg);
+  transform: rotate(108deg);
+}
+
+/*average displayed value*/
+.active[data-average='60'] .inner {
+  -webkit-transform: rotate(-108deg);
+  -moz-transform: rotate(-108deg);
+  -ms-transform: rotate(-108deg);
+  -o-transform: rotate(-108deg);
+  transform: rotate(-108deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='70'] > div.trendGauge div.triangle, .active[data-percent='70'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(126deg);
+  -moz-transform: rotate(126deg);
+  -ms-transform: rotate(126deg);
+  -o-transform: rotate(126deg);
+  transform: rotate(126deg);
+}
+
+/*average displayed value*/
+.active[data-average='70'] .inner {
+  -webkit-transform: rotate(-126deg);
+  -moz-transform: rotate(-126deg);
+  -ms-transform: rotate(-126deg);
+  -o-transform: rotate(-126deg);
+  transform: rotate(-126deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='80'] > div.trendGauge div.triangle, .active[data-percent='80'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(144deg);
+  -moz-transform: rotate(144deg);
+  -ms-transform: rotate(144deg);
+  -o-transform: rotate(144deg);
+  transform: rotate(144deg);
+}
+
+/*average displayed value*/
+.active[data-average='80'] .inner {
+  -webkit-transform: rotate(-144deg);
+  -moz-transform: rotate(-144deg);
+  -ms-transform: rotate(-144deg);
+  -o-transform: rotate(-144deg);
+  transform: rotate(-144deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='90'] > div.trendGauge div.triangle, .active[data-percent='90'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(162deg);
+  -moz-transform: rotate(162deg);
+  -ms-transform: rotate(162deg);
+  -o-transform: rotate(162deg);
+  transform: rotate(162deg);
+}
+
+/*average displayed value*/
+.active[data-average='90'] .inner {
+  -webkit-transform: rotate(-162deg);
+  -moz-transform: rotate(-162deg);
+  -ms-transform: rotate(-162deg);
+  -o-transform: rotate(-162deg);
+  transform: rotate(-162deg);
+}
+
+/*arrow & triangle*/
+.active[data-average='100'] > div.trendGauge div.triangle, .active[data-percent='100'] > div.trendGauge > div.scale > div[data-arrow] {
+  -webkit-transform: rotate(180deg);
+  -moz-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+/*average displayed value*/
+.active[data-average='100'] .inner {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}

@@ -1,0 +1,92 @@
+@import "compass/css3/transform";
+@import "compass/reset";
+
+//function for setting arrow and triangle animation properties in different browsers
+@mixin _transition($transition-property, $transition-time, $method) {
+  -webkit-transition: $transition-property $transition-time $method;
+  -moz-transition: $transition-property $transition-time $method;
+  -ms-transition: $transition-property $transition-time $method;
+  -o-transition: $transition-property $transition-time $method;
+  transition: $transition-property $transition-time $method;
+}
+
+.trendGauge {
+  position: relative;
+  width: 250px;
+  height: 130px;
+  overflow: hidden;
+
+  .scale {
+    position: absolute;
+    top: 20px;
+    left: 35px;
+    width: 170px;
+    height: 85px;
+    background: url(../stylesheets/images/scale.png) no-repeat center ;
+
+    .bottomArrow {
+      position: absolute;
+      bottom: -59px;
+      left: 25px;
+      width: 120px;
+      height: 120px;
+      background: url(../stylesheets/images/bottomArrow.png) no-repeat center bottom ;
+      @include _transition(all, 1s, ease-in-out);
+    }
+
+    .triangle {
+      width: 171px;
+      height: 171px;
+      position: absolute;
+      right: 0;
+      bottom: -85px;
+      background: url(../stylesheets/images/triangle.png) no-repeat center;
+      @include _transition(all, 1s, ease-in-out);
+
+      .inner {
+        position: absolute;
+        bottom: 76px;
+        left: -20px;
+        font-size: 12px;
+        color: #939598;
+      }
+    }
+
+    span {
+      position: absolute;
+      bottom: -3px;
+      font-size: 12px;
+      color: #939598;
+
+      &.value {
+        bottom: -28px;
+        left: 73px;
+        font-size: 24px;
+        color: #4ca5ca;
+      }
+
+      &.leftValue {
+        left: -15px;
+      }
+
+      &.rightValue {
+        right: -24px;
+      }
+    }
+  }
+}
+
+/*rotate element according to the given average and percent, normalize to 10 different cases*/
+@for $i from 0 through 10 {
+  /*arrow & triangle*/
+  .active[data-average='#{$i*10}'] > div.trendGauge div.triangle, .active[data-percent='#{$i*10}'] > div.trendGauge > div.scale > div[data-arrow]{
+    @include transform2d(rotate(#{180deg * $i/10}));
+  }
+
+  /*average displayed value*/
+  .active[data-average='#{$i*10}'] .inner{
+    @include transform2d(rotate(#{180deg * $i/10 * -1}));
+  }
+}
+
+
